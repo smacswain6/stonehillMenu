@@ -1,14 +1,17 @@
 h1{
-	color = #f12344
+	color: #f12344;
 	text-align: center;
 	font-size: 64px;
 	}
-
+body {
+    background-color:purple;
+}
 
 
 /* Bordered form */
 form {
-    border: 3px solid #f1f1f1;
+    border: 3px solid silver;
+    background-color: silver;
 }
 
 /* Full-width inputs */
