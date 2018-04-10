@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Homepage</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='fooditem.css') }}" />
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul>
+<li><a class='active' href='/homepage'>Homepage</a></li>
+<li><a class = 'active' href='/menu'>Menu</a></li>
+<li><a class='active' href='/search'>Search</a></li>
+<li><a class='active' href='/landing'>Sign Out</a></li>
+<li><a class='active' href='/userpage'>User Page</a></li>
+<li><a class='active' href='/admin'>Admin</a></li>
+</ul>
+
+<h1>{{name}}</h1>
+
+<!--Food Table-->
+
+<img src= "{{ url_for('static', filename='images/')}}{{image}}"/>
+<table>
+<tr>
+<td>
+<p> Description: {{description}}</p>
+</td>
+<td>
+<p> Rating: {{rating}} </p>
+</td>
+</tr>
+<tr>
+<td>
+<p> Station: {{station}} </p>
+</td>
+<td>
+<p> Day Served: {{day}} </p>
+</td>
+</tr>
+</table>
+
+<!--Add Comment or Rating-->
+<h2> Add your rating </h2>
+<form id='form' method='post' action='fooditem'>
+<p> Rate <input type='number' name='rate' min='0' max='10'/><p>
+<p> Review <input type='textfield' name='review'/>
+<input type='submit' value='Submit' name='submit'/>
+</form>
+
+<!--Comments Table-->
+<h2> Reviews </h2>
+<table>
+{% for review in reviews %}
+<tr>
+<td>
+<p> {{review.review}} </p>
+</td>
+<td>
+<p> {{review.username}} </p>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>User Page</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='userpageCSS.css') }}" />
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul>
+<li><a class='active' href='/homepage'>Homepage</a></li>
+<li><a class ='active' href='/menu'>Menu</a></li>
+<li><a class='active' href='/search'>Search</a></li>
+<li><a class='active' href='/landing'>Sign Out</a></li>
+<li><a class='active' href='/userpage'>User Page</a></li>
+</ul>
+
+<div class="reviews">
+<table>
+<th>
+Your three most recent reviews:
+</th>
+{% set count=1 %}
+{% for result in results2 %}
+<tr><td>
+{{count}}. {{result.name}}<br>
+"{{result.review}}"
+</td></tr>
+{% set count = count + 1 %}
+{% endfor %}
+</table>
+</div>
+
+<div class="rates">
+<table>
+<th>
+Your three favorite meals:
+</th>
+{% set count2=1 %}
+{% for rating in topRated %}
+<tr><td>{{count2}}. {{rating.foodname}} with a rating of {{rating.value}}</td></tr>
+<tr><td><img src= "{{ url_for('static', filename='images/')}}{{foodImages[count2-1].image}}" height="150" width="300" /></td></tr>
+{% set count2 = count2 + 1 %}
+{% endfor %}
+</table>
+</div>
+<div class="stats">
+<table class="one" height="200px" width="400px">
+<th>User stats</th>
+<tr>
+<td>Total ratings: </td>
+<td>{{ratingCount}}</td>
+</tr>
+<tr>
+<td>Average rating: </td>
+<td>{{avgRating}}</td>
+</tr>
+<tr>
+<td>Total Reviews:</td>
+<td>{{reviewCount}}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

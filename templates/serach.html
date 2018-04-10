@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Homepage</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='fooditem.css') }}" />
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul>
+<li><a class='active' href='homepage.html'>Homepage</a></li>
+<li><a class = 'active' href='menu.html'>Menu</a></li>
+<li><a class='active' href='search.html'>Search</a></li>
+<li><a class='active' href='fooditem.html'>Food Item Example</a></li>
+<li><a class='active' href='login.html'>Sign Out</a></li>
+</ul>
+
+<h1>{{name}}</h1>
+
+<!--Food Table-->
+
+<img src= "{{ url_for('static', filename='images/')}}{{image}}"/>
+<table>
+<tr><td>
+<p> Description: {{description}}</p>
+</tr></td>
+<tr><td>
+<p> Rating: {{rating}} </p>
+</tr></td>
+</table>
+
+<!--Add Comment or Rating-->
+<input type='submit' value='comment'/>
+<input type='submit' value='rate'/>
+
+<!--Comments Table-->
+<h2> Reviews </h2>
+<table>
+<tr><td class='reviews'>
+<p>Great meal and a good price. I would recommend it.</p>
+</td><td class='reviews'>
+<p>mealrater47</p>
+</td></tr>
+</table>
+
+</body>
+</html>

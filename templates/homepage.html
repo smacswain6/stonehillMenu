@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Homepage</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul>
+<li><a class='active' href='/homepage' name='homepageurl'>Homepage</a></li>
+<li><a class = 'active' href='/menu'>Menu</a></li>
+<li><a class='active' href='/search'>Search</a></li>
+<li><a class='active' href='/landing'>Sign Out</a></li>
+<li><a class='active' href='/userpage'>User Page</a></li>
+</ul>
+
+<h1>Homepage</h1>
+<h3> This Week's Popular Foods </h3>
+<p>Top 3 foods of the week</p>
+{% set count = 1%}
+{% for result in results %}
+<p>{{count}}. {{result.name}} With a rating of {{result.rating/result.votes}}</p>
+{% set count = count + 1 %}
+{% endfor %}
+<table><tr>
+{% for result in results %}
+<td>
+<img src= "{{ url_for('static', filename='images/')}}{{result.image}}"/>
+</td>
+{% endfor %}
+</tr><tr>
+{% for result in results %}
+<td>
+<p>{{result.name}}</p>
+</td>
+{% endfor %}
+</tr>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Menu</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='menu.css') }}" />
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul>
+<li><a class='active' href='/homepage'>Homepage</a></li>
+<li><a class='active' href='/menu'>Menu</a></li>
+<li><a href='/search'>Search</a></li>
+<li><a class='active' href='/landing'>Sign Out</a></li>
+<li><a class='active' href='/userpage'>User Page</a></li>
+<li><a class='active' href='/admin'>Admin</a></li>
+</ul>
+
+<!--Menu-->
+<h1>This Week's Menu</h1>
+<form id='form' method='post' action='menu'>
+<table>
+<tr>
+<th>Day</th>
+<th>Meal</th>
+<th>Station</th>
+<th> Button</th>
+</tr>
+{% for food in results %}
+<tr>
+<td>{{food.day}}</td>
+<td>{{food.name}}</td>
+<td>{{food.station}}</td>
+<td><input type='submit' name='{{food.name}}' value='View Food'></td>
+</tr>
+{% endfor %}
+</table>
+</form>
+</body>
+</html>

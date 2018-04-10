@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Homepage</title>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='specialnav.css') }}" />
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    var availableTags = [
+      "Chicken Wrap",
+      "Breakfast Sandwich",
+      "Buffalo Chicken Penne",
+      "Burger Mania",
+      "Bean and Cheese Chimichanga",
+      "Pan Seared Potstickers with Dipping Sauce and Rice",
+      "Vegetable Mac and Cheese Bar",
+      "Grilled Cheese Bar",
+      "Bread Boules",
+      "New England Clam Chowder",
+      "Veggie Tostada Bowls",
+      "Sauteed Grilled Murray Farms Chicken",
+      "BBQ Beef Briskett",
+      "Pancakes",
+      "Tacos",
+      "Eggplant Parmesan Plate",
+      "Chicken Cavatelli",
+      "Philly Steak and Cheese BLT Sub",
+      "Steak and Turkey Tip Toss",
+      "Spinach Lasagna Plate",
+      "General Tso Chicken",
+      "Rotisserie Chicken",
+      "Angus Quesadilla Burger",
+      "BBQ Pulled Pork or Chicken Sandwich",
+      "Antipasto Salad Plate",
+      "Carved Roast Turkey Breast Sandwich",
+      "Chicken Fritters",
+      "Italiano",
+      "Curried Tofu and Rice",
+      "Pastabilities",
+      "Yankee Pot Roast",
+      "Ultimate MEatball Sandwich",
+      "Veggie Nacho Bar",
+      "Spinach and Roasted Garlic Tortelloni",
+      "Portobello Beef and Jalapeno Jam Sliders",
+      "Calzonee",
+      "Calabrian Polenta",
+      "Teriyaki Beef Stir-fry",
+      "Rotisserie Turkey Dinner",
+      "Fish Tacos",
+      "Steakhouse Salad",
+      "Zesty Orange Ginger Chicken Stirfry",
+      "Hot Turkey Sandwich",
+      "Baked Potato Bar",
+      "Fresh Angus BBQ Bacon Cheeseburger",
+      "Chicken Breast Florentine",
+      "Teriyaki Tofu Lo Mein",
+      "Japanese Beef Curry",
+      "Honey Mustard Chicken Wrap",
+      "Hot Dog",
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+</head>
+<body>
+
+<!--NAV BAR-->
+<ul class='nav'>
+<li class='nav'><a class='active' href='/homepage'>Homepage</a></li>
+<li class='nav'><a class = 'active' href='/menu'>Menu</a></li>
+<li class='nav'><a href='/search'>Search</a></li>
+<li class='nav'><a class='active' href='/landing'>Sign Out</a></li>
+<li class='nav'><a class='active' href='/userpage'>User Page</a></li>
+<li class='nav'><a class='active' href='/admin'>Admin</a></li>
+</ul>
+
+<!--SEARCH-->
+<h1>Search Meal</h1>
+<form id="form" method="post">
+<div class='ui-widget'>
+<label for='tags'> Tags </label>
+<input type='text' id='tags' name='search'/>
+</div>
+<input type='submit' name='submit' value='submit'/>
+</form>
+</body>
+</html>
