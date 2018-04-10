@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" >
 <title>Homepage</title>
-<link rel = 'stylesheet'  href = "{{ url_for('static', filename='login.css') }}" />
-<link rel = 'stylesheet'  href = "{{ url_for('static', filename='nav.css') }}" />
+<link rel = 'stylesheet'  href = "../static/login.css" />
+<link rel = 'stylesheet'  href = "../static/nav.css" />
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 <table><tr>
 {% for result in results %}
 <td>
-<img src= "{{ url_for('static', filename='images/')}}{{result.image}}"/>
+<img src= "../static/images/result.image"/>
 </td>
 {% endfor %}
 </tr><tr>
@@ -38,5 +38,6 @@
 </td>
 {% endfor %}
 </tr>
+</table>
 </body>
 </html>
