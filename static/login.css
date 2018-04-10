@@ -1,82 +1,65 @@
-h1{
-	color: #f12344;
-	text-align: center;
-	font-size: 64px;
-	}
-body {
-    background-color:purple;
+body
+{
+background-color:purple;
+text-align:center;
 }
 
-
-/* Bordered form */
-form {
-    border: 3px solid silver;
-    background-color: silver;
+h1
+{
+margin-left:auto;
+margin-right:auto;
 }
 
-/* Full-width inputs */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+table
+{
+padding: 5px;
+margin-left: auto;
+margin-right: auto;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+tr
+{
+border: 6px solid black:
+padding: 20px;
 }
 
-/* Add a hover effect for buttons */
-button:hover {
-    opacity: 0.8;
+img
+{
+height: 300px;
+width: 400px;
 }
 
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+img.left
+{
+float:left;
 }
 
-/* Center the avatar image inside this container */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
+img.right
+{
+float:right;
 }
 
-/* Avatar image */
-img.login {
-    width: 10%;
-    border-radius: 20%;
+.inline
+{
+display:inline;
 }
 
-/* Add padding to containers */
-.container {
-    padding: 16px;
+img.banner
+{
+height:150px;
+width: 1000px;
+margin-top: 50px;
 }
 
-/* The "Forgot password" text */
-span.psw {
-    float: right;
-    padding-top: 16px;
+.fooditems
+{
+color:black;
 }
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
-    }
-    .cancelbtn {
-        width: 100%;
-    }
+.reviews
+{
+float:right;
+}
+.rates
+{
+float:left;
 }
