@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64cfc30a-39e7-4f91-bdb4-c833cd8a00a6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fooditem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fooditem.html" afterDir="false" />
+    <list default="true" id="64cfc30a-39e7-4f91-bdb4-c833cd8a00a6" name="Default" comment="admin page nav menu functionality">
       <change beforePath="$PROJECT_DIR$/templates/foodlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/foodlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/menu.html" afterDir="false" />
@@ -19,25 +17,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="createaccount.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/createaccount.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fooditem.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/fooditem.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/menu.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -187,7 +167,7 @@
       <workItem from="1523325189425" duration="1003000" />
       <workItem from="1523326438233" duration="1323000" />
       <workItem from="1523329293576" duration="3241000" />
-      <workItem from="1523495691247" duration="3541000" />
+      <workItem from="1523495691247" duration="3794000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1523329334678</created>
@@ -238,11 +218,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523499653499</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fooditem page nav menu functionality">
+      <created>1523499875460</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1523499875460</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9336000" />
+    <option name="totallyTimeSpent" value="9589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="119" y="23" width="1161" height="707" extended-state="0" />
@@ -307,7 +294,8 @@
     <MESSAGE value="fooditem.html POST to be handled by fooditem.php" />
     <MESSAGE value="changed the header of several htmls" />
     <MESSAGE value="admin page nav menu functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin page nav menu functionality" />
+    <MESSAGE value="fooditem page nav menu functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="fooditem page nav menu functionality" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/admin.html">
@@ -443,20 +431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fooditem.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/userpage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -489,6 +463,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fooditem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
         </state>
       </provider>
     </entry>
