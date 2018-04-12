@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64cfc30a-39e7-4f91-bdb4-c833cd8a00a6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/php/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -161,7 +159,7 @@
       <workItem from="1523325189425" duration="1003000" />
       <workItem from="1523326438233" duration="1323000" />
       <workItem from="1523329293576" duration="3241000" />
-      <workItem from="1523495691247" duration="829000" />
+      <workItem from="1523495691247" duration="1009000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1523329334678</created>
@@ -170,11 +168,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523329334678</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added admin.php and adjusted admin.html to refer to admin.php">
+      <created>1523496760923</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523496760923</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6624000" />
+    <option name="totallyTimeSpent" value="6804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="707" extended-state="6" />
@@ -211,7 +216,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="added admin.php and adjusted admin.html to refer to admin.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="added admin.php and adjusted admin.html to refer to admin.php" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/admin.html">
