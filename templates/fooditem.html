@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8" >
-<title>Homepage</title>
+<title>Food Item</title>
 <link rel = 'stylesheet'  href = "../static/login.css" />
 <link rel = 'stylesheet'  href = "../static/nav.css" />
 <link rel = 'stylesheet'  href = "../static/fooditem.css" />
@@ -11,11 +11,11 @@
 
 <!--NAV BAR-->
 <ul>
-<li><a class='active' href='/homepage'>Homepage</a></li>
-<li><a class = 'active' href='/menu'>Menu</a></li>
-<li><a class='active' href='/search'>Search</a></li>
-<li><a class='active' href='/landing'>Sign Out</a></li>
-<li><a class='active' href='/userpage'>User Page</a></li>
+    <li><a class='active' href='homepage.html' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='menu.html'>Menu</a></li>
+    <li><a class='active' href='search.html'>Search</a></li>
+    <li><a class='active' href='landing.html'>Sign Out</a></li>
+    <li><a class='active' href='userpage.html'>User Page</a></li>
 </ul>
 
 <h1>{{name}}</h1>
@@ -44,7 +44,7 @@
 
 <!--Add Comment or Rating-->
 <h2> Add your rating </h2>
-<form id='form' method='post' action='fooditem'>
+<form id='form' method='post' action='../php/fooditem.php'>
 <p> Rate <input type='number' name='rate' min='0' max='10'/><p>
 <p> Review <input type='textfield' name='review'/>
 <input type='submit' value='Submit' name='submit'/>

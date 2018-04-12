@@ -10,19 +10,19 @@
 
 <!--NAV BAR-->
 <ul>
-<li><a class='active' href='/homepage' name='homepageurl'>Homepage</a></li>
-<li><a class = 'active' href='/menu'>Menu</a></li>
-<li><a class='active' href='/search'>Search</a></li>
-<li><a class='active' href='/landing'>Sign Out</a></li>
-<li><a class='active' href='/userpage'>User Page</a></li>
-<li><a class='active' href='/admin'>Admin</a></li>
+<li><a class='active' href='homepageAdmin.html' >Homepage</a></li>
+<li><a class = 'active' href='menuAdmin.html'>Menu</a></li>
+<li><a class='active' href='searchAdmin.html'>Search</a></li>
+<li><a class='active' href='landing.html'>Sign Out</a></li>
+<li><a class='active' href='userpageAdmin.html'>User Page</a></li>
+<li><a class='active' href='admin.html'>Admin</a></li>
 </ul>
 
 <h1> Admin </h1>
 <h2>Create/Update Food Items</h2>
 <p>Only food name is required for updates.</p>
 <p>All fields are required for inserts.</p>
-<form id='admin' method='post' action='admin' enctype='multipart/form-data'/>
+<form id='admin' method='post' action='../php/admin.php' enctype='multipart/form-data'/>
 <table>
 <tr><td>Name:<input type='text' name='foodname'/></td></tr>
 <tr><td>Description:<input type='text' name='description'/></td></tr>
