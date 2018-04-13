@@ -9,7 +9,7 @@ private $pdo;
 */
 public function connect() {
 if ($this->pdo == null) {
-$this->pdo = new \PDO("sqlite:" . "../db/database.db");
+$this->pdo = new PDO("sqlite:" . "../db/database.db");
 }
 return $this->pdo;
 }
