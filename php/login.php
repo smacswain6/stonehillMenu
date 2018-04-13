@@ -2,14 +2,15 @@
 <body>
 
 <?php
-
-    /* right now hardocded for one user, in future will incorporate sql database to check
+include ("UserDao.php");
+    /* right now hardcoded for one user, in future will incorporate sql database to check
     username password combo */
-    if($_POST["username"]=="smacswain")
+    $dao=new UserDao();
+    $dao->connect();
+    $user=$dao->selectByUserID($_POST["username"]);
+    if($_POST["username"]==$user['username'] && $_POST["password"]==$user["password"])
     {
-        if($_POST["password"]=="password") {
-            include("../templates/homepage.html");
-        }
+        include("../templates/homepage.html");
     }
     else
     {
