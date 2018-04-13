@@ -6,6 +6,7 @@
  * Time: 9:32 PM
  */
 use SQLiteConnection;
+use User;
 
 class UserDao extends SQLite3
 {
@@ -22,13 +23,8 @@ class UserDao extends SQLite3
     {
         $stmt = $this->pdo->query('SELECT id, password '
             . 'FROM users');
-        
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $projects[] = [
-                'project_id' => $row['project_id'],
-                'project_name' => $row['project_name']
-            ];
-        }
-        return $projects;
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $user=User()->User($row['id'],$row['password']);
+        return $user;
     }
 }
