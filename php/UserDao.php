@@ -14,10 +14,10 @@ class UserDao extends SQLite3
      * PDO instance
      * @var PDO
      */
-    public $pdo;
+    private $pdo;
     public function __construct()
     {
-
+        $this->pdo=(new SQLiteConnection())->connect();
     }
 
     public function connect()
@@ -31,10 +31,13 @@ class UserDao extends SQLite3
 
     function selectByUserID($userid)
     {
-        $stmt =$this->pdo->query('SELECT id, password '
-            . 'FROM users'.'WHERE id=:id');
-        $stmt->execute([':id' => $userid]);
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $stmt=$this->pdo->prepare("SELECT id,password FROM users WHERE id=:id;");
+        if($stmt==NULL) {
+            error_log("stmt is null", 0);
+        }
+        try {
+            $stmt->execute([':id' => $userid]);
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
         if($row==NULL)
         {
             print("Error in selectByUserID, user not found");
@@ -43,6 +46,11 @@ class UserDao extends SQLite3
         else {
             $user = new User($row['id'], $row['password']);
             return $user;
+        }
+        }
+        catch (PDOException $exception)
+        {
+          error_log($exception->getMessage());
         }
     }
 }
