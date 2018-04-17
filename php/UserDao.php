@@ -123,14 +123,16 @@ class UserDao extends SQLite3
         $dao->insert(new User('nick','lischenok'));
         $dao->insert(new User('matt','young'));
         $dao->insert(new User('michael','middleton'));
+        $dao->insert(new User("matt","peters"));
     }
 
 }
 
 #UserDao::populate();
 $dao=new UserDao();
+$dao->populate();
 //$dao->delete(new User("michael","middleton"));
 //$dao->delete(new User('nick','lischenok'));
 //$dao->delete(new User('matt','young'));
 //$dao->delete(new User('michael','middleton'));
-$dao->update(new User("sam","passwordChange"));
+#$dao->delete(new User("sam","passwordChange"));
