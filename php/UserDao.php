@@ -89,12 +89,13 @@ class UserDao extends SQLite3
     function update($user)
     {
         try {
-            $sql = 'UPDATE users set id = :id, password = :password';
+            $sql = 'UPDATE users set id = :id, password = :password WHERE id=:id';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':id' => $user->username,
                 ':password' => $user->password,
             ]);
+            echo 'changed';
             return true;
         }
         catch (PDOException $exception) {
@@ -121,7 +122,7 @@ class UserDao extends SQLite3
         $dao=new UserDao();
         $dao->insert(new User('sam','bradford'));
         $dao->insert(new User('nick','lischenok'));
-        $dao->insert(new User('matt','young'));
+        $dao->insert(new User('matthew','young'));
         $dao->insert(new User('michael','middleton'));
         $dao->insert(new User("matt","peters"));
     }
@@ -129,10 +130,11 @@ class UserDao extends SQLite3
 }
 
 #UserDao::populate();
-$dao=new UserDao();
-$dao->populate();
+#$dao=new UserDao();
+#$dao->populate();
 //$dao->delete(new User("michael","middleton"));
 //$dao->delete(new User('nick','lischenok'));
-//$dao->delete(new User('matt','young'));
+#$dao->delete(new User('matt','young'));
 //$dao->delete(new User('michael','middleton'));
-#$dao->delete(new User("sam","passwordChange"));
+//$dao->delete(new User("sam","passwordChange"));
+//$dao->update(new User ('user','passwordChange'));
