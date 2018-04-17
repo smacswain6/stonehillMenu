@@ -30,20 +30,20 @@ class ReviewDao extends SQLite3
     public function selectByFoodname($review)
     {
         try {
-            $sql ="SELECT * FROM reviews WHERE name=:name;";
+            $sql = "SELECT * FROM reviews WHERE name=:name;";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':name' => $review->name,
             ]);
             $reviews = [];
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $review = new Review($row['user'],$row['name'],$row['review']);
+                $review = new Review($row['user'], $row['name'], $row['review']);
                 array_push($reviews, $review);
             }
             return $reviews;
-    }
-        catch (PDOException $exception) {
+        } catch (PDOException $exception) {
             error_log($exception->getMessage());
             return Null;
         }
+    }
 }
