@@ -9,15 +9,15 @@ include ("UserDao.php");
     $user=$dao->selectByUserID($_POST["username"]);
     if($user==NULL)
     {
-        include("../templates/login.html");
+        header('Location:../templates/login.html');
     }
     else if($_POST["username"]==$user->username && $_POST["password"]==$user->password)
     {
-        include("../templates/homepage.html");
+        header('Location:../templates/homepage.html');
     }
     else
     {
-        include("../templates/login.html");
+        header("'Location:../templates/login.html");
     }
     ?>
 </body>
