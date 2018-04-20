@@ -1,18 +1,23 @@
 <?php
-class SQLiteConnection {
+class SQLiteConnection
+{
+    /**
+     * return in instance of the PDO object that connects to the SQLite database
+     * @return \PDO
+     */
+    public function connect()
+    {
+        $dbhost = "menudb.cpjmzja1ggqk.us-west-2.rds.amazonaws.com";
+        $dbport = "3306";
+        $dbname = "menudb";
+        $charset = 'utf8';
 
-private $pdo;
+        $dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
+        $username = "root";
+        $password = "rootpassword";
 
-/**
-* return in instance of the PDO object that connects to the SQLite database
-* @return \PDO
-*/
-public function connect() {
-if ($this->pdo == null) {
-$this->pdo = new PDO("sqlite:" . "../db/menudb.db");
+        $pdo = new PDO($dsn, $username, $password);
+        return $pdo;
+    }
 }
-return $this->pdo;
-}
-}
-
 ?>
