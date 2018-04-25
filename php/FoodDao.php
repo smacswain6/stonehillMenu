@@ -7,3 +7,4 @@
  */
 
 include("SQLiteConnection.php");
+include("Food.php");
