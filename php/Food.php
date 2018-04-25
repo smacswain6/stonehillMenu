@@ -17,7 +17,7 @@ class Food
     var $votes;
     var $current;
 
-    public function _construct($n,$r,$i,$d,$s,$da,$v,$c)
+    public function __construct($n,$r,$i,$d,$s,$da,$v,$c)
     {
         $this->name = $n;
         $this->rating = $r;

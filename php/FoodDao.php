@@ -102,6 +102,6 @@ class FoodDao
         $dao->insert(new Food('Chicken Wrap', 5, 'chickenwrap.jpg', 'crispy chicken wrap', 'Entree', 'Monday', 1, 'true'));
     }
 }
-#FoodDao::populate();
-$dao=new FoodDao();
-$foods=$dao->selectAll();
+//FoodDao::populate();
+//$dao=new FoodDao();
+//$foods=$dao->selectAll();
