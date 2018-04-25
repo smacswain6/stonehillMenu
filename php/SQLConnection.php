@@ -1,5 +1,5 @@
 <?php
-class SQLiteConnection
+class SQLConnection
 {
     /**
      * return in instance of the PDO object that connects to the SQLite database

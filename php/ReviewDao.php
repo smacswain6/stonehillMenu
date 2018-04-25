@@ -16,12 +16,12 @@ class ReviewDao extends SQLite3
 
     public function __construct()
     {
-        $this->pdo = (new SQLiteConnection())->connect();
+        $this->pdo = (new SQLConnection())->connect();
     }
 
     public function connect()
     {
-        $pdo = (new SQLiteConnection())->connect();
+        $pdo = (new SQLConnection())->connect();
         if ($pdo != null) {
             echo 'Connected to the SQLite database successfully!';
         } else

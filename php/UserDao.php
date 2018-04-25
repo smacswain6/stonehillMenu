@@ -5,10 +5,10 @@
  * Date: 4/11/2018
  * Time: 9:32 PM
  */
-include("SQLiteConnection.php");
+include("SQLConnection.php");
 include("User.php");
 
-class UserDao extends SQLite3
+class UserDao
 {
     /**
      * PDO instance
@@ -18,12 +18,12 @@ class UserDao extends SQLite3
 
     public function __construct()
     {
-        $this->pdo = (new SQLiteConnection())->connect();
+        $this->pdo = (new SQLConnection())->connect();
     }
 
     public function connect()
     {
-        $pdo = (new SQLiteConnection())->connect();
+        $pdo = (new SQLConnection())->connect();
         if ($pdo != null) {
             echo 'Connected to the SQLite database successfully!';
         } else
