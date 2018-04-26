@@ -6,12 +6,16 @@
  * Time: 9:31 PM
  */
 
+include("SQLConnection.php");
+include("User.php");
+
 class ReviewDao extends SQLite3
 {
     /**
      * PDO instance
      * @var PDO
      */
+
     private $pdo;
 
     public function __construct()
@@ -45,5 +49,28 @@ class ReviewDao extends SQLite3
             error_log($exception->getMessage());
             return Null;
         }
+    }
+
+    public function selectByUsername($review)
+    {
+        try {
+            $sql = "select * from reviews where username=:username;";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->excecute([':username' => $review->username,]);
+            $reviews = [];
+
+            while($row = $stmt->fetch( \PDO::FETCH_ASSOC)) {
+                $review = new Review($row['username'], $row['review'],$row['foodname']);
+                array_push( $reviews, $review);
+            }
+            return $reviews;
+        }
+
+        catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            return Nulll;
+        }
+
+
     }
 }
