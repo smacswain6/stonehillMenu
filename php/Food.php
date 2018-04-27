@@ -29,7 +29,7 @@ class Food
         $this->current=$c;
     }
 
-    function toString()
+    function __toString()
     {
         return $this->name." ".$this->rating." ".$this->image." ".$this->description." ".$this->station." ".$this->day." ".$this->votes." ".$this->current;
     }
