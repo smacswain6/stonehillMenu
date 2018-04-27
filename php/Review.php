@@ -9,18 +9,38 @@
 class Review
 {
     var $username;
-    var $name;
     var $review;
+    var $foodname;
 
-    public function __construct($user,$name,$review)
+    public function __construct($username,$review,$foodname)
     {
-        $this->username=$user;
-        $this->name=$name;
+        $this->username=$username;
         $this->review=$review;
+        $this->foodname=$foodname;
     }
     public function __toString()
     {
-        return $this->name." ".$this->username." ".$this->review;
+        return $this->username." ".$this->review." ".$this->foodname;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getReview()
+    {
+        return $this->review;
+    }
+
+    public function getFoodname()
+    {
+        return $this->foodname;
     }
 
 }
+
+#$review = new Review('Matt','okay','Tacos');
+#print $review->getUsername();
+#print $review->getReview();
+#print $review->getFoodname();
