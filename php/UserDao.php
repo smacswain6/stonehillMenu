@@ -129,7 +129,7 @@ class UserDao
 
 }
 
-#UserDao::populate();
+//UserDao::populate();
 #$dao=new UserDao();
 #$dao->populate();
 //$dao->delete(new User("michael","middleton"));

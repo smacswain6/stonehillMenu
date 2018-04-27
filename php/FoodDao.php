@@ -150,6 +150,6 @@ class FoodDao
         $dao->insert(new Food('Honey Mustard Chicken Wrap',5,'honeymustardchickenwrap.jpg','chicken wrap with honey mustard','Grill','Friday',1,'true'));
         }
 }
-FoodDao::populate();
+#FoodDao::populate();
 //$dao=new FoodDao();
 //$foods=$dao->selectAll();
