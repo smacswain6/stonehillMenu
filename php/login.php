@@ -13,6 +13,8 @@ include ("UserDao.php");
     }
     else if($_POST["username"]==$user->username && $_POST["password"]==$user->password)
     {
+        session_start();
+        $_SESSION['user']=$user->username;
         header('Location:../templates/homepage.html');
     }
     else

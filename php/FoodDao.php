@@ -30,6 +30,27 @@ class FoodDao
             echo 'Whoops, could not connect to the SQLite database!';
     }
 
+    public function orderByRating()
+    {
+        $stmt = $this->pdo->prepare("SELECT * from foods ORDER BY rating");
+        if ($stmt == NULL) {
+            error_log("stmt is null", 0);
+        }
+        try{
+        $stmt->execute();
+        $foodItems = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $foodItem = new Food($row['name'], $row['rating'], $row['image'], $row['description'], $row['station'],
+                $row['day'], $row['votes'], $row['current']);
+            array_push($foodItems, $foodItem);
+        }
+        return $foodItems;
+    } catch (PDOException $exception) {
+error_log($exception->getMessage());
+}
+return Null;
+}
+
     public function selectByFoodname($foodname)
     {
         $stmt = $this->pdo->prepare("SELECT * from foods where name=:name;");
@@ -150,6 +171,6 @@ class FoodDao
         $dao->insert(new Food('Honey Mustard Chicken Wrap',5,'honeymustardchickenwrap.jpg','chicken wrap with honey mustard','Grill','Friday',1,'true'));
         }
 }
-FoodDao::populate();
+#FoodDao::populate();
 //$dao=new FoodDao();
 //$foods=$dao->selectAll();

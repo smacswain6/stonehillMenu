@@ -16,7 +16,7 @@ class User
         $this->password=$pass;
     }
 
-    function toString()
+    function __toString()
     {
         return $this->username." ".$this->password;
     }
