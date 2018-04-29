@@ -8,6 +8,7 @@
 
 include("SQLConnection.php");
 include("User.php");
+include("Review.php");
 
 class ReviewDao extends SQLite3
 {
@@ -31,17 +32,16 @@ class ReviewDao extends SQLite3
         } else
             echo 'Whoops, could not connect to the SQLite database!';
     }
-    public function selectByFoodname($review)
+
+    public function selectByFoodname($foodname)
     {
         try {
-            $sql = "SELECT * FROM reviews WHERE name=:name;";
+            $sql = "SELECT * FROM reviews WHERE foodname=:foodname;";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':name' => $review->name,
-            ]);
+            $stmt->execute([':foodname' => $foodname,]);
             $reviews = [];
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $review = new Review($row['user'], $row['name'], $row['review']);
+                $review = new Review($row['username'], $row['review'], $row['foodname']);
                 array_push($reviews, $review);
             }
             return $reviews;
@@ -51,26 +51,46 @@ class ReviewDao extends SQLite3
         }
     }
 
-    public function selectByUsername($review)
+    public function selectByUsername($username)
     {
         try {
             $sql = "select * from reviews where username=:username;";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->excecute([':username' => $review->username,]);
+            $stmt->execute([':username' => $username,]);
             $reviews = [];
 
-            while($row = $stmt->fetch( \PDO::FETCH_ASSOC)) {
-                $review = new Review($row['username'], $row['review'],$row['foodname']);
-                array_push( $reviews, $review);
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $review = new Review($row['username'], $row['review'], $row['foodname']);
+                array_push($reviews, $review);
             }
             return $reviews;
-        }
-
-        catch (PDOException $exception) {
+        } catch (PDOException $exception) {
             error_log($exception->getMessage());
             return Nulll;
         }
 
 
     }
+
+    public function insert($review)
+    {
+        try {
+            $sql = 'INSERT INTO review(username,review,foodname) VALUES(:username,:review,:foodname)';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':username' => $review->username,
+                ':review' => $review->review,
+                ':foodname' => $review->foodname,
+            ]);
+            return true;
+        } catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            return false;
+
+
+        }
+
+
+    }
 }
+
