@@ -47,21 +47,24 @@ Your three favorite meals:
 </table>
 </div>
 <div class="stats">
-<table class="one" height="200px" width="400px">
-<th>User stats</th>
-<tr>
-<td>Total ratings: </td>
-<td>{{ratingCount}}</td>
-</tr>
-<tr>
-<td>Average rating: </td>
-<td>{{avgRating}}</td>
-</tr>
-<tr>
-<td>Total Reviews:</td>
-<td>{{reviewCount}}</td>
-</tr>
-</table>
+
+<?php echo '<table class=\"one\" height=\"200px\" width=\"400px\">'
+    echo '<th>User stats</th>'
+    <tr>
+        <td>Total ratings: </td>
+        <td>{{ratingCount}}</td>
+    </tr>
+    <tr>
+        <td>Average rating: </td>
+        <td>{{avgRating}}</td>
+    </tr>
+    <tr>
+        <td>Total Reviews:</td>
+        <td>{{reviewCount}}</td>
+    </tr>
+    </table>';
+    ?>
+
 </div>
 </body>
 </html>

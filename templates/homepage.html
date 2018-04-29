@@ -20,6 +20,7 @@
 <h1>Homepage</h1>
 <h3> This Week's Popular Foods </h3>
 <p>Top 3 foods of the week</p>
+<p> Review <?php for($i=1;$i<10;$i++) {echo $i} ?> </p>td>
 {% set count = 1%}
 {% for result in results %}
 <p>{{count}}. {{result.name}} With a rating of {{result.rating/result.votes}}</p>
