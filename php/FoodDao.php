@@ -84,7 +84,6 @@ return Null;
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                 $foodItem = new Food($row['name'], $row['rating'], $row['image'], $row['description'], $row['station'],
                     $row['day'], $row['votes'], $row['current']);
-                print_r($foodItem);
                 array_push($foodItems, $foodItem);
             }
             return $foodItems;
