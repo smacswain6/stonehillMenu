@@ -92,5 +92,18 @@ class ReviewDao extends SQLite3
 
 
     }
+
+    public function populate()
+    {
+        $dao = new ReviewDao();
+        $dao->insert(new Review('matt','Not Bad','Baked Potato Bar'));
+        $dao->insert(new Review('nick','pretty good','Calzonee'));
+        $dao->insert(new Review('sam','not good','Chicken Wrap'));
+        $dao->insert(new Review('stephen','aweful','Burger Mania'));
+        $dao->insert(new Review('michael','fantastic','Baked Potato Bar'));
+    }
 }
+
+$dao = new ReviewDao();
+$dao->populate();
 
