@@ -20,8 +20,9 @@
 
 <!--Menu-->
 <h1>This Week's Menu</h1>
-<form id='form' method='post' action='menu'>
+<form id='form' method='post' action=''>
         <?php populateMenu(); ?>
+    <?php checkForm(); ?>
 </form>
 </body>
 </html>
@@ -35,10 +36,11 @@
 
 function populateMenu()
 {
-    include("FoodDao.php");
+    include("FoodDao.php");#issue is having this in each method, change that and it should work
     #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
+    $dao=Null;
     echo '<table>
         <tr>
             <th>Day</th>
@@ -54,5 +56,21 @@ function populateMenu()
     }
     echo '</table>';
 }
+function checkForm()
+{
+    include("FoodDao.php");
+    #$user = $_SESSION['user'];
+    $dao = new FoodDao();
+    print_r("POST: ".$_POST);
+    $menuItems = $dao->selectAll();
+    for ($i = 0; $i <count($menuItems); $i++) {
+        $name=$menuItems[$i]->name;
+        if(isset($_POST[$name])){
+            $_SESSION['fooditem']=$name;
+            header("Location: ../templates/fooditem.html"); /* Redirect browser */
+        }
+    }
+}
+
 
 ?>
