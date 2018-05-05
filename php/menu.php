@@ -1,3 +1,4 @@
+<?php include ("FoodDao.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +22,8 @@
 <!--Menu-->
 <h1>This Week's Menu</h1>
 <form id='form' method='post' action=''>
-        <?php populateMenu(); ?>
     <?php checkForm(); ?>
+        <?php populateMenu(); ?>
 </form>
 </body>
 </html>
@@ -36,7 +37,7 @@
 
 function populateMenu()
 {
-    include("FoodDao.php");#issue is having this in each method, change that and it should work
+    #include("FoodDao.php");#issue is having this in each method, change that and it should work
     #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
@@ -58,13 +59,13 @@ function populateMenu()
 }
 function checkForm()
 {
-    include("FoodDao.php");
+    #include("FoodDao.php");
     #$user = $_SESSION['user'];
     $dao = new FoodDao();
-    print_r("POST: ".$_POST);
     $menuItems = $dao->selectAll();
     for ($i = 0; $i <count($menuItems); $i++) {
         $name=$menuItems[$i]->name;
+        $name=str_replace(' ','_',$name);
         if(isset($_POST[$name])){
             $_SESSION['fooditem']=$name;
             header("Location: ../templates/fooditem.html"); /* Redirect browser */
