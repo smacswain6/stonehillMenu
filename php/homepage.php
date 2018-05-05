@@ -10,11 +10,11 @@
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='../templates/homepage.html' name='homepageurl'>Homepage</a></li>
-    <li><a class = 'active' href='../templates/menu.html'>Menu</a></li>
-    <li><a class='active' href='../templates/search.html'>Search</a></li>
-    <li><a class='active' href='../templates/landing.html'>Sign Out</a></li>
-    <li><a class='active' href='../templates/userpage.html'>User Page</a></li>
+    <li><a class='active' href='../php/homepage.php' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='../php/menu.php'>Menu</a></li>
+    <li><a class='active' href='../php/search.php'>Search</a></li>
+    <li><a class='active' href='../php/landing.php'>Sign Out</a></li>
+    <li><a class='active' href='../php/userpage.php'>User Page</a></li>
 </ul>
 
 
