@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Stephen
- * Date: 5/6/2018
- * Time: 10:31 PM
- */
-session_start();
 include("FoodDao.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,12 +65,12 @@ if(isset($_POST['search'])) {
     $dao=new FoodDao();
     $food=$dao->selectByFoodname($foodname);
     if($food != Null) {
-        $_SESSION['$fooditem'] = $food;
+        $_SESSION['fooditem'] = $food;
         header("Location: ../php/fooditem.php");
     }
     else
     {
-        return;
+        echo 'food not found';
     }
 }
 else
