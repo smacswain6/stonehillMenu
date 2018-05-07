@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+include("UserDao.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +32,6 @@
 <?php
 function login()
 {
-    include("UserDao.php");
     /* right now hardcoded for one user, in future will incorporate sql database to check
     username password combo */
     if(isset($_POST['username'])) {
@@ -38,8 +40,7 @@ function login()
         if ($user == NULL) {
             return;
         } else if ($_POST["username"] == $user->username && $_POST["password"] == $user->password) {
-            session_start();
-            $_SESSION['user'] = $user->username;
+            $_SESSION['user'] = $user;
             header('Location:../php/homepage.php');
         } else {
             header("'Location:../php/login.php");

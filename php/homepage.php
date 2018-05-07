@@ -5,6 +5,7 @@
  * Date: 4/27/2018
  * Time: 6:16 PM
  */
+include("User.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ session_start();
 
 
 
-<h1>Homepage</h1>
+<h1>Welcome <?php getUserName(); ?></h1>
 <h3> This Week's Popular Foods </h3>
 <p>Top 3 foods of the week</p>
 <?php TopThreeFoods(); ?>
@@ -59,6 +60,10 @@ function TopThreeFoods()
         $htmlStatement = '<td><p>' . $topThree[$i]->name . '</p></td>';
     }
     echo '</tr></table>';
+}
+
+function getUserName(){
+    echo $_SESSION['user']->username;
 }
 ?>
 
