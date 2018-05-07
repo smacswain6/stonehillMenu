@@ -6,11 +6,10 @@
  * Time: 9:31 PM
  */
 
-include("SQLConnection.php");
 include("User.php");
 include("Review.php");
 
-class ReviewDao extends SQLite3
+class ReviewDao
 {
     /**
      * PDO instance
@@ -21,16 +20,22 @@ class ReviewDao extends SQLite3
 
     public function __construct()
     {
-        $this->pdo = (new SQLConnection())->connect();
+        $this->pdo = ReviewDao::connect();
     }
 
     public function connect()
     {
-        $pdo = (new SQLConnection())->connect();
-        if ($pdo != null) {
-            echo 'Connected to the SQLite database successfully!';
-        } else
-            echo 'Whoops, could not connect to the SQLite database!';
+        $dbhost = "menudb.cpjmzja1ggqk.us-west-2.rds.amazonaws.com";
+        $dbport = "3306";
+        $dbname = "menudb";
+        $charset = 'utf8';
+
+        $dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
+        $username = "root";
+        $password = "rootpassword";
+
+        $pdo = new PDO($dsn, $username, $password);
+        return $pdo;
     }
 
     public function selectByFoodname($foodname)

@@ -5,6 +5,8 @@
  * Date: 5/6/2018
  * Time: 4:19 PM
  */
+require_once("ReviewDao.php");
+require_once("RatingDao.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -59,7 +61,6 @@ session_start();
 
 function getReviews()
 {
-    include("ReviewDao.php");
     $dao=new ReviewDao();
     $reviews=$dao->selectByUsername($_SESSION['user']);
     array_reverse($reviews);
@@ -72,7 +73,7 @@ function getReviews()
 }
 function getRatings()
 {
-    include("RatingDao.php");
+    #include_once("RatingDao.php");
     echo '<table><th>Your three favorite meals: </th>';
     $dao=new RatingDao();
     $reviews=$dao->selectByUsername($_SESSION['user']);

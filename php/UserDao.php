@@ -5,7 +5,7 @@
  * Date: 4/11/2018
  * Time: 9:32 PM
  */
-include("SQLConnection.php");
+
 include("User.php");
 
 class UserDao
@@ -18,16 +18,22 @@ class UserDao
 
     public function __construct()
     {
-        $this->pdo = (new SQLConnection())->connect();
+        $this->pdo = UserDao::connect();
     }
 
     public function connect()
     {
-        $pdo = (new SQLConnection())->connect();
-        if ($pdo != null) {
-            echo 'Connected to the SQLite database successfully!';
-        } else
-            echo 'Whoops, could not connect to the SQLite database!';
+        $dbhost = "menudb.cpjmzja1ggqk.us-west-2.rds.amazonaws.com";
+        $dbport = "3306";
+        $dbname = "menudb";
+        $charset = 'utf8';
+
+        $dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
+        $username = "root";
+        $password = "rootpassword";
+
+        $pdo = new PDO($dsn, $username, $password);
+        return $pdo;
     }
 
     function selectByUserID($userid)

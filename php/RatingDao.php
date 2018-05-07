@@ -6,7 +6,6 @@
  * Time: 6:15 PM
  */
 
-include("SQLConnection.php");
 include("Rating.php");
 
 class RatingDao
@@ -15,16 +14,22 @@ class RatingDao
 
     public function __construct()
     {
-        $this->pdo = (new SQLConnection())->connect();
+        $this->pdo = RatingDao::connect();
     }
 
     public function connect()
     {
-        $pdo = (new SQLConnection())->connect();
-        if ($pdo != null) {
-            echo 'Connected to the SQLite database successfully!';
-        } else
-            echo 'Whoops, could not connect to the SQLite database!';
+        $dbhost = "menudb.cpjmzja1ggqk.us-west-2.rds.amazonaws.com";
+        $dbport = "3306";
+        $dbname = "menudb";
+        $charset = 'utf8';
+
+        $dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname};charset={$charset}";
+        $username = "root";
+        $password = "rootpassword";
+
+        $pdo = new PDO($dsn, $username, $password);
+        return $pdo;
     }
 
     function insert($rating)
@@ -60,6 +65,26 @@ class RatingDao
             return false;
         }
     }
+    public function selectByUsername($username)
+    {
+        try {
+            $sql = "select * from rating where username=:username;";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':username' => $username,]);
+            $ratings = [];
+
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $rating = new Rating($row['foodname'],$row['value'], $row['username']);
+                array_push($ratings, $rating);
+            }
+            return $ratings;
+        } catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            return Null;
+        }
+
+
+    }
 
     function update($rating)
     {
@@ -83,7 +108,7 @@ class RatingDao
 }
 
 #$dao = new RatingDao();
-#$rating = new Rating('Tacos',5,'matt');
+#$rating = new Rating('Burger Mania',1,'stephen');
 #print $rating->id;
 #$dao->insert($rating);
 #$rating1 = new Rating('Tacos', 10, 'matt');
