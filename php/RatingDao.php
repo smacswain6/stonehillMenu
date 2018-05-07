@@ -7,7 +7,6 @@
  */
 
 include("Rating.php");
-
 class RatingDao
 {
     private $pdo;
@@ -44,8 +43,7 @@ class RatingDao
                 ':id' => $rating->id,
             ]);
             return true;
-        }
-        catch (PDOException $exception) {
+        } catch (PDOException $exception) {
             error_log($exception->getMessage());
             return false;
         }
@@ -65,6 +63,7 @@ class RatingDao
             return false;
         }
     }
+
     public function selectByUsername($username)
     {
         try {
@@ -74,7 +73,7 @@ class RatingDao
             $ratings = [];
 
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $rating = new Rating($row['foodname'],$row['value'], $row['username']);
+                $rating = new Rating($row['foodname'], $row['value'], $row['username']);
                 array_push($ratings, $rating);
             }
             return $ratings;
@@ -82,30 +81,46 @@ class RatingDao
             error_log($exception->getMessage());
             return Null;
         }
+    }
+    public function selectByFoodname($fname)
+        {
+            try {
+                $sql = "select * from ratings where foodname=:foodname;";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([':foodname' => $fname,]);
+                $ratings = [];
+
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $rating = new Rating($row['foodname'], $row['value'], $row['username']);
+                    array_push($ratings, $rating);
+                }
+                return $ratings;
+            } catch (PDOException $exception) {
+                error_log($exception->getMessage());
+                return Null;
+            }
+
+
+        }
+
+        function update($rating)
+        {
+            try {
+                $sql = 'UPDATE ratings set value = :value WHERE id=:id';
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([
+                    ':value' => $rating->value,
+                    ':id' => $rating->id,
+                ]);
+                return true;
+            } catch (PDOException $exception) {
+                error_log($exception->getMessage());
+                return false;
+            }
+        }
 
 
     }
-
-    function update($rating)
-    {
-        try {
-            $sql = 'UPDATE ratings set value = :value WHERE id=:id';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                ':value' => $rating->value,
-                ':id' => $rating->id,
-            ]);
-            echo 'changed';
-            return true;
-        }
-        catch (PDOException $exception) {
-            error_log($exception->getMessage());
-            return false;
-        }
-    }
-
-
-}
 
 #$dao = new RatingDao();
 #$rating = new Rating('Burger Mania',1,'stephen');
@@ -114,3 +129,6 @@ class RatingDao
 #$rating1 = new Rating('Tacos', 10, 'matt');
 #print $rating1->key;
 #$dao->update($rating1);
+#$ratings = $dao->selectByFoodname("Tacos");
+#foreach ($ratings as $rating){
+#    echo $rating->value;

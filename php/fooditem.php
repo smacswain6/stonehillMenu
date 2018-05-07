@@ -1,5 +1,7 @@
 <?php
-include("Food.php");
+include("FoodDao.php");
+include("RatingDao.php");
+include("ReviewDao.php");
 session_start();
 ?>
 
@@ -16,11 +18,11 @@ session_start();
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='homepage.html' name='homepageurl'>Homepage</a></li>
-    <li><a class = 'active' href='menu.html'>Menu</a></li>
-    <li><a class='active' href='search.html'>Search</a></li>
-    <li><a class='active' href='landing.html'>Sign Out</a></li>
-    <li><a class='active' href='userpage.html'>User Page</a></li>
+    <li><a class='active' href='homepage.php' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='menu.php'>Menu</a></li>
+    <li><a class='active' href='search.php'>Search</a></li>
+    <li><a class='active' href='landing.php'>Sign Out</a></li>
+    <li><a class='active' href='userpage.php'>User Page</a></li>
 </ul>
 
 <h1> <?php getFoodName(); ?> </h1>
@@ -69,7 +71,6 @@ session_start();
 <?php
 function getReviews()
 {
-    include_once("ReviewDao.php");
     $dao = new ReviewDao();
     if (isset($_SESSION['fooditem'])) {
         $reviews = $dao->selectByFoodname($_SESSION['fooditem']->name);
@@ -113,15 +114,6 @@ function getDescription()
     }
 }
 
-function getRating(){
-    if(isset($_SESSION['fooditem'])){
-        echo $_SESSION['fooditem']->rating;
-    }
-    else{
-        echo "No rating found";
-    }
-}
-
 function getStation(){
     if(isset($_SESSION['fooditem'])){
         echo $_SESSION['fooditem']->station;
@@ -142,19 +134,42 @@ function getDay(){
 
 function handleForm()
 {
-    include("ReviewDao.php");
     $dao = new ReviewDao();
     if (isset($_POST['review'])) {
-        $review = new Review($_SESSION['user']->name, $_POST['review'], $_SESSION['fooditem']->name);
-        $dao->insert($review);
+        $review = new Review($_SESSION['user']->username, $_POST['review'], $_SESSION['fooditem']->name);
+        if($_POST['review'] == ''){}
+        else {
+            $dao->insert($review);
+            $dao->update($review);
+        }
         header("'Location:../php/fooditem.php");
     }
 
-    include("RatingDao.php");
     $dao = new RatingDao();
-    if (isset($_POST['rate'])){
-        $rating = new Rating($_SESSION['fooditem']->name,$_POST['rate'],$_SESSION['user']->name);
+    if (isset($_POST['rate'])) {
+        $rating = new Rating($_SESSION['fooditem']->name,$_POST['rate'],$_SESSION['user']->username);
         $dao->insert($rating);
+        $dao->update($rating);
+    }
+        header("'Location:../php/fooditem.php");
+
+}
+
+function getRating(){
+    $dao = new RatingDao();
+    $ratings = $dao->selectByFoodname($_SESSION['fooditem']->name);
+    $sum = 0;
+    $count = 0;
+    foreach ($ratings as $rating){
+        $sum = $sum + $rating->value;
+        $count = $count + 1;
+    }
+    if($count == 0){
+        echo 'no rating yet';
+    }
+    else {
+        $sum = $sum/$count;
+        echo $sum;
     }
 }
 ?>
