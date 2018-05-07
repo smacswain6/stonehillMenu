@@ -68,7 +68,7 @@ class RatingDao
     public function selectByUsername($username)
     {
         try {
-            $sql = "select * from rating where username=:username;";
+            $sql = "select * from ratings where username=:username;";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':username' => $username,]);
             $ratings = [];
