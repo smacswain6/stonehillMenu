@@ -43,6 +43,8 @@ function TopThreeFoods()
     #$user=$_SESSION['user'];
     $dao = new FoodDao();
     $foods = $dao->orderByRating();
+    $foods=array_reverse($foods);
+    //print_r($foods);
     $topThree = array_slice($foods, 0, 3);
     $count = 1;
     for ($i = 0; $i < 3; $i++) {

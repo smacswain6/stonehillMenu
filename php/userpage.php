@@ -48,7 +48,7 @@ function getReviews()
 {
     $dao=new ReviewDao();
     $reviews=$dao->selectByUsername($_SESSION['user']->username);
-    array_reverse($reviews);
+    $reviews=array_reverse($reviews);
     $topThree = array_slice($reviews, 0, 3);
    echo ' <table> <th> Your three most recent reviews: </th> ';
    for($i=0;$i<count($topThree);$i++) {
