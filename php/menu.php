@@ -13,11 +13,11 @@
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='homepage.html' name='homepageurl'>Homepage</a></li>
-    <li><a class = 'active' href='menu.html'>Menu</a></li>
-    <li><a class='active' href='search.html'>Search</a></li>
-    <li><a class='active' href='landing.html'>Sign Out</a></li>
-    <li><a class='active' href='userpage.html'>User Page</a></li>
+    <li><a class='active' href='homepage.php' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='menu.php'>Menu</a></li>
+    <li><a class='active' href='search.php'>Search</a></li>
+    <li><a class='active' href='landing.php'>Sign Out</a></li>
+    <li><a class='active' href='userpage.php'>User Page</a></li>
 </ul>
 
 <!--Menu-->
