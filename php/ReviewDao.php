@@ -36,7 +36,7 @@ class ReviewDao extends SQLite3
     public function selectByFoodname($foodname)
     {
         try {
-            $sql = "SELECT * FROM reviews WHERE foodname=:foodname;";
+            $sql = "SELECT * FROM review WHERE foodname=:foodname;";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':foodname' => $foodname,]);
             $reviews = [];
@@ -54,7 +54,7 @@ class ReviewDao extends SQLite3
     public function selectByUsername($username)
     {
         try {
-            $sql = "select * from reviews where username=:username;";
+            $sql = "select * from review where username=:username;";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([':username' => $username,]);
             $reviews = [];
@@ -66,7 +66,7 @@ class ReviewDao extends SQLite3
             return $reviews;
         } catch (PDOException $exception) {
             error_log($exception->getMessage());
-            return Nulll;
+            return Null;
         }
 
 
@@ -75,12 +75,13 @@ class ReviewDao extends SQLite3
     public function insert($review)
     {
         try {
-            $sql = 'INSERT INTO review(username,review,foodname) VALUES(:username,:review,:foodname)';
+            $sql = 'INSERT INTO review(username,review,foodname,id) VALUES(:username,:review,:foodname,:id)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':username' => $review->username,
                 ':review' => $review->review,
                 ':foodname' => $review->foodname,
+                ':id' => $review->username.$review->foodname,
             ]);
             return true;
         } catch (PDOException $exception) {
@@ -97,13 +98,13 @@ class ReviewDao extends SQLite3
     {
         $dao = new ReviewDao();
         $dao->insert(new Review('matt','Not Bad','Baked Potato Bar'));
-        $dao->insert(new Review('nick','pretty good','Calzonee'));
+        $dao->insert(new Review('nick','pretty good','Calzone'));
         $dao->insert(new Review('sam','not good','Chicken Wrap'));
         $dao->insert(new Review('stephen','aweful','Burger Mania'));
         $dao->insert(new Review('michael','fantastic','Baked Potato Bar'));
     }
 }
 
-$dao = new ReviewDao();
-$dao->populate();
+#$dao = new ReviewDao();
+#$dao->populate();
 

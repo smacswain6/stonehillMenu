@@ -11,12 +11,13 @@ class Review
     var $username;
     var $review;
     var $foodname;
-
+    var $key;
     public function __construct($username,$review,$foodname)
     {
         $this->username=$username;
         $this->review=$review;
         $this->foodname=$foodname;
+        $this->key=$username.$foodname;
     }
     public function __toString()
     {

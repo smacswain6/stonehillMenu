@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Stephen
+ * Date: 4/27/2018
+ * Time: 6:16 PM
+ */
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,12 +35,6 @@
 </body>
 </html>
 <?php
-/**
- * Created by PhpStorm.
- * User: Stephen
- * Date: 4/27/2018
- * Time: 6:16 PM
- */
 
 function TopThreeFoods()
 {
