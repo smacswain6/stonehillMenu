@@ -19,11 +19,11 @@ session_start();
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='homepage.html' name='homepageurl'>Homepage</a></li>
-    <li><a class = 'active' href='menu.html'>Menu</a></li>
-    <li><a class='active' href='search.html'>Search</a></li>
-    <li><a class='active' href='landing.html'>Sign Out</a></li>
-    <li><a class='active' href='userpage.html'>User Page</a></li>
+    <li><a class='active' href='homepage.php' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='menu.php'>Menu</a></li>
+    <li><a class='active' href='search.php'>Search</a></li>
+    <li><a class='active' href='landing.php'>Sign Out</a></li>
+    <li><a class='active' href='userpage.php'>User Page</a></li>
 </ul>
 
 <div class="reviews">
@@ -62,7 +62,6 @@ function getReviews()
     include("ReviewDao.php");
     $dao=new ReviewDao();
     $reviews=$dao->selectByUsername($_SESSION['user']);
-    print_r($reviews);
     array_reverse($reviews);
     $topThree = array_slice($reviews, 0, 3);
    echo ' <table> <th> Your three most recent reviews: </th> ';
@@ -73,8 +72,9 @@ function getReviews()
 }
 function getRatings()
 {
+    include("RatingDao.php");
     echo '<table><th>Your three favorite meals: </th>';
-    $dao=new ReviewDao();
+    $dao=new RatingDao();
     $reviews=$dao->selectByUsername($_SESSION['user']);
     $topThree = array_slice($reviews, 0, 3);
     for($i=0;$i<count($topThree);$i++) {
