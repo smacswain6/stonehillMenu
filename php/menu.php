@@ -38,8 +38,6 @@
 
 function populateMenu()
 {
-    #include("FoodDao.php");#issue is having this in each method, change that and it should work
-    #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     $dao=Null;
@@ -60,8 +58,6 @@ function populateMenu()
 }
 function checkForm()
 {
-    #include("FoodDao.php");
-    #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     for ($i = 0; $i <count($menuItems); $i++) {

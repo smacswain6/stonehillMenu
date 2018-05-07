@@ -47,7 +47,7 @@ session_start();
 function getReviews()
 {
     $dao=new ReviewDao();
-    $reviews=$dao->selectByUsername($_SESSION['user']);
+    $reviews=$dao->selectByUsername($_SESSION['user']->username);
     array_reverse($reviews);
     $topThree = array_slice($reviews, 0, 3);
    echo ' <table> <th> Your three most recent reviews: </th> ';
@@ -61,7 +61,7 @@ function getRatings()
     echo '<table><th>Your three favorite meals: </th>';
     $dao=new RatingDao();
     $foodDao=new FoodDao();
-    $ratings=$dao->selectByUsername($_SESSION['user']);
+    $ratings=$dao->selectByUsername($_SESSION['user']->username);
     $topThree = array_slice($ratings, 0, 3);
     for($i=0;$i<count($topThree);$i++) {
         echo '<tr><td>' . ($i + 1) . '. ' . $topThree[$i]->foodname.' with a rating of '. $topThree[$i]->value.'</td></tr>';
@@ -75,8 +75,8 @@ function getStats()
 {
     $ratingDao=new RatingDao();
     $reviewDao=new ReviewDao();
-    $reviews=$reviewDao->selectByUsername($_SESSION['user']);
-    $ratings=$ratingDao->selectByUsername($_SESSION['user']);
+    $reviews=$reviewDao->selectByUsername($_SESSION['user']->username);
+    $ratings=$ratingDao->selectByUsername($_SESSION['user']->username);
     $ratingCount=count($ratings);
     $reviewCount=count($reviews);
     $sum=0;
