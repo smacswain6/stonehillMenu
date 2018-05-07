@@ -38,7 +38,7 @@ class UserDao
 
     function selectByUserID($userid)
     {
-        $stmt = $this->pdo->prepare("SELECT id,password FROM users WHERE id=:id;");
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id;");
         if ($stmt == NULL) {
             error_log("stmt is null", 0);
         }
@@ -49,7 +49,7 @@ class UserDao
                 print("Error in selectByUserID, user not found");
                 return NULL;
             } else {
-                $user = new User($row['id'], $row['password']);
+                $user = new User($row['id'], $row['password'], $row['admin']);
                 return $user;
             }
         } catch (PDOException $exception) {
@@ -67,7 +67,7 @@ class UserDao
             $stmt->execute();
             $users = [];
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $user = new User($row['id'], $row['password']);
+                $user = new User($row['id'], $row['password'],$row['admin']);
                 array_push($users, $user);
             }
             return $users;
@@ -79,11 +79,12 @@ class UserDao
     function insert($user)
     {
         try {
-            $sql = 'INSERT INTO users(id,password) VALUES(:id,:password)';
+            $sql = 'INSERT INTO users(id,password,admin) VALUES(:id,:password,:admin)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':id' => $user->username,
                 ':password' => $user->password,
+                ':admin' => $user->admin,
             ]);
             return true;
         }
@@ -95,13 +96,13 @@ class UserDao
     function update($user)
     {
         try {
-            $sql = 'UPDATE users set id = :id, password = :password WHERE id=:id';
+            $sql = 'UPDATE users set id = :id, password = :password, admin =:admin WHERE id=:id';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':id' => $user->username,
                 ':password' => $user->password,
+                'admin' => $user->admin
             ]);
-            echo 'changed';
             return true;
         }
         catch (PDOException $exception) {
@@ -126,11 +127,11 @@ class UserDao
     function populate()
     {
         $dao=new UserDao();
-        $dao->insert(new User('sam','bradford'));
-        $dao->insert(new User('nick','lischenok'));
-        $dao->insert(new User('matthew','young'));
-        $dao->insert(new User('michael','middleton'));
-        $dao->insert(new User("matt","peters"));
+        $dao->insert(new User('sam','bradford',0));
+        $dao->insert(new User('nick','lischenok',0));
+        $dao->insert(new User('matthew','young',0));
+        $dao->insert(new User('michael','middleton',0));
+        $dao->insert(new User("matt","peters",0));
     }
 
 }

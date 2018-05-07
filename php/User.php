@@ -10,10 +10,12 @@ class User
 {
     var $username;
     var $password;
-    public function __construct($user,$pass)
+    var $admin;
+    public function __construct($user,$pass,$admin)
     {
         $this->username=$user;
         $this->password=$pass;
+        $this->admin=$admin;
     }
 
     function __toString()

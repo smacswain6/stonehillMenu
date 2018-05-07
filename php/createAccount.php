@@ -54,7 +54,7 @@ function createAccount()
     $userValue=$dao->selectByUserID($_POST['username']);
     if($userValue==NULL)
     {
-        $dao->insert(new User($_POST['username'],$_POST['password']));
+        $dao->insert(new User($_POST['username'],$_POST['password'],0));
         header("Location: ../php/login.php");
     }
     else
