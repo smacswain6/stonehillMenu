@@ -44,6 +44,7 @@ include("FoodDao.php");
     <div class='ui-widget'>
         <label for='tags'> Tags </label>
         <input type='text' id='tags' name='search'/>
+        <?php checkForm(); ?>
     </div>
     <input type='submit' name='submit' value='submit'/>
 </form>
@@ -62,5 +63,23 @@ function getTags()
         array_push($foodsNames,$foods[$i]->name);
     }
     return $foodsNames;
+}
+function checkForm()
+{
+if(isset($_POST['search'])) {
+    $foodname=$_POST['search'];
+    $dao=new FoodDao();
+    $food=$dao->selectByFoodname($foodname);
+    if($food != Null) {
+        $_SESSION['$fooditem'] = $food;
+        header("Location: ../php/fooditem.php");
+    }
+    else
+    {
+        return;
+    }
+}
+else
+    return;
 }
 ?>
