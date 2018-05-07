@@ -99,6 +99,27 @@ return Null;
         return Null;
     }
 
+    function update($foodItem)
+    {
+        try {
+            $sql = 'UPDATE foods set image=:im, description=:ds, station=:st, day=:d WHERE name=:n';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':im' => $foodItem->image,
+                ':ds' => $foodItem->description,
+                ':st' => $foodItem->station,
+                ':d' => $foodItem->day,
+                ':n' => $foodItem->name,
+            ]);
+            echo 'changed';
+            return true;
+        }
+        catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            return false;
+        }
+    }
+
     function insert($foodItem)
     {
         try {
@@ -177,5 +198,7 @@ return Null;
         }
 }
 #FoodDao::populate();
-//$dao=new FoodDao();
+$dao=new FoodDao();
 //$foods=$dao->selectAll();
+$food = new Food('Angus Quesadilla Burger',5,'angusquesadillaburger.jpg','Burger and Fries','Grill','Wednesday',1,true);
+$dao->update($food);
