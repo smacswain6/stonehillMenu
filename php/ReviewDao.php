@@ -10,7 +10,7 @@ include("SQLConnection.php");
 include("User.php");
 include("Review.php");
 
-class ReviewDao extends SQLite3
+class ReviewDao
 {
     /**
      * PDO instance

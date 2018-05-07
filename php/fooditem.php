@@ -50,6 +50,7 @@ session_start();
 <!--Add Comment or Rating-->
 <h2> Add your rating </h2>
 <form id='form' method='post' action='../php/fooditem.php'>
+    <?php handleForm() ?>
     <p> Rate <input type='number' name='rate' min='0' max='10'/><p>
     <p> Review <input type='textfield' name='review'/>
         <input type='submit' value='Submit' name='submit'/>
@@ -71,7 +72,7 @@ function getReviews()
     include_once("ReviewDao.php");
     $dao = new ReviewDao();
     if (isset($_SESSION['fooditem'])) {
-        $reviews = $dao->selectByFoodname($_SESSION['fooditem']);
+        $reviews = $dao->selectByFoodname($_SESSION['fooditem']->name);
         foreach ($reviews as $review) {
             $string = $review->review;
             $username = $review->username;
@@ -94,7 +95,7 @@ function getFoodName()
 function getFoodImage()
 {
     if(isset($_SESSION['fooditem'])) {
-        echo $_SESSION['fooditem']->image;
+        echo "../static/images/".$_SESSION['fooditem']->image;
     }
     else{
         echo "No image available";
@@ -114,7 +115,7 @@ function getDescription()
 
 function getRating(){
     if(isset($_SESSION['fooditem'])){
-        echo $_SESSION->ratings;
+        echo $_SESSION['fooditem']->rating;
     }
     else{
         echo "No rating found";
@@ -123,7 +124,7 @@ function getRating(){
 
 function getStation(){
     if(isset($_SESSION['fooditem'])){
-        echo $_SESSION->station;
+        echo $_SESSION['fooditem']->station;
     }
     else{
         echo "No station found";
@@ -132,12 +133,28 @@ function getStation(){
 
 function getDay(){
     if(isset($_SESSION['fooditem'])){
-        echo $_SESSION->day;
+        echo $_SESSION['fooditem']->day;
     }
     else{
         echo "No day found";
     }
 }
 
+function handleForm()
+{
+    include("ReviewDao.php");
+    $dao = new ReviewDao();
+    if (isset($_POST['review'])) {
+        $review = new Review($_SESSION['user']->name, $_POST['review'], $_SESSION['fooditem']->name);
+        $dao->insert($review);
+        header("'Location:../php/fooditem.php");
+    }
 
+    include("RatingDao.php");
+    $dao = new RatingDao();
+    if (isset($_POST['rate'])){
+        $rating = new Rating($_SESSION['fooditem']->name,$_POST['rate'],$_SESSION['user']->name);
+        $dao->insert($rating);
+    }
+}
 ?>
