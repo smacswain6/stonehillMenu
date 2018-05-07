@@ -13,11 +13,11 @@
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='homepage.html' name='homepageurl'>Homepage</a></li>
-    <li><a class = 'active' href='menu.html'>Menu</a></li>
-    <li><a class='active' href='search.html'>Search</a></li>
-    <li><a class='active' href='landing.html'>Sign Out</a></li>
-    <li><a class='active' href='userpage.html'>User Page</a></li>
+    <li><a class='active' href='homepage.php' name='homepageurl'>Homepage</a></li>
+    <li><a class = 'active' href='menu.php'>Menu</a></li>
+    <li><a class='active' href='search.php'>Search</a></li>
+    <li><a class='active' href='landing.php'>Sign Out</a></li>
+    <li><a class='active' href='userpage.php'>User Page</a></li>
 </ul>
 
 <!--Menu-->
@@ -38,8 +38,6 @@
 
 function populateMenu()
 {
-    #include("FoodDao.php");#issue is having this in each method, change that and it should work
-    #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     $dao=Null;
@@ -60,8 +58,6 @@ function populateMenu()
 }
 function checkForm()
 {
-    #include("FoodDao.php");
-    #$user = $_SESSION['user'];
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     for ($i = 0; $i <count($menuItems); $i++) {
