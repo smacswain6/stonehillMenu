@@ -99,6 +99,23 @@ class ReviewDao
 
     }
 
+    function update($review)
+    {
+        try {
+            $sql = 'UPDATE review set review = :val WHERE username=:uname and foodname=:fname';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':val' => $review->review,
+                ':uname' => $review->username,
+                ':fname' => $review->foodname,
+            ]);
+            return true;
+        } catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            return false;
+        }
+    }
+
     public function populate()
     {
         $dao = new ReviewDao();
@@ -110,6 +127,8 @@ class ReviewDao
     }
 }
 
-#$dao = new ReviewDao();
-#$dao->populate();
+$dao = new ReviewDao();
+$dao->populate();
+$review = new Review('jorge','decent','Baked Potato Bar');
+$dao->insert($review);
 
