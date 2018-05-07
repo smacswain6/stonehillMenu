@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include ("FoodDao.php"); ?>
 <!DOCTYPE html>
 <html>
@@ -67,11 +68,14 @@ function checkForm()
         $name=$menuItems[$i]->name;
         $name=str_replace(' ','_',$name);
         if(isset($_POST[$name])){
-            $_SESSION['fooditem']=$name;
-            header("Location: ../templates/fooditem.html"); /* Redirect browser */
+            $name=str_replace('_',' ',$name);
+            $fooditem = $dao->selectByFoodname($name);
+            $_SESSION['fooditem']=$fooditem;
+            header("Location: ../php/fooditem.php"); /* Redirect browser */
         }
     }
 }
+
 
 
 ?>
