@@ -72,7 +72,7 @@ if(isset($_POST['search'])) {
     $food=$dao->selectByFoodname($foodname);
     if($food != Null) {
         $_SESSION['$fooditem'] = $food;
-        header("Location: ../php/fooditem.php");
+        header("Location:../php/fooditem.php");
     }
     else
     {
