@@ -65,7 +65,7 @@ function handleForm(){
     if(isset($_POST['foodname'])){
         $foodname = $_POST['foodname'];
         $description = $_POST['description'];
-        $image = 'test.jpg';
+        $image = $_POST['file'];
         $station = $_POST['day'];
         $day = $_POST['day'];
         $foodItem = new Food($foodname,1,$image,$description,$station,$day,1,true);
