@@ -140,12 +140,3 @@ class UserDao
 
 }
 
-//UserDao::populate();
-$dao=new UserDao();
-$dao->populate();
-//$dao->delete(new User("michael","middleton"));
-//$dao->delete(new User('nick','lischenok'));
-#$dao->delete(new User('matt','young'));
-//$dao->delete(new User('michael','middleton'));
-//$dao->delete(new User("sam","passwordChange"));
-//$dao->update(new User ('user','passwordChange'));

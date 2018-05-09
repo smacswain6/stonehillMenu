@@ -171,7 +171,5 @@ class ReviewDao
     }
 }
 
-$dao = new ReviewDao();
-$dao->populate();
 
 
