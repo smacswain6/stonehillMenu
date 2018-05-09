@@ -23,6 +23,7 @@ session_start();
     <li><a class='active' href='search.php'>Search</a></li>
     <li><a class='active' href='landing.php'>Sign Out</a></li>
     <li><a class='active' href='userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 <h1> <?php getFoodName(); ?> </h1>
@@ -153,6 +154,17 @@ function handleForm()
     }
         header("'Location:../php/fooditem.php");
 
+}
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
+    }
 }
 
 function getRating(){

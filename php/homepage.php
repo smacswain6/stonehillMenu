@@ -25,6 +25,7 @@ session_start();
     <li><a class='active' href='../php/search.php'>Search</a></li>
     <li><a class='active' href='../php/landing.php'>Sign Out</a></li>
     <li><a class='active' href='../php/userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 
@@ -40,28 +41,45 @@ session_start();
 function TopThreeFoods()
 {
     include("FoodDao.php");
+    include("RatingDao.php");
     #$user=$_SESSION['user'];
-    $dao = new FoodDao();
-    $foods = $dao->orderByRating();
-    $foods=array_reverse($foods);
+    $foodDao = new FoodDao();
+    $ratingDao = new RatingDao();
+    $ratings= $ratingDao->orderByValue();
+    $ratings=array_reverse($ratings);
     //print_r($foods);
-    $topThree = array_slice($foods, 0, 3);
+    $topThree = array_slice($ratings, 0, 3);
     $count = 1;
     for ($i = 0; $i < 3; $i++) {
-        $htmlStatement = '<p>' . $count . '. ' . $topThree[$i]->name . ' with a rating of ' . ($topThree[$i]->rating / $topThree[$i]->votes) . '</p>';
+        $food=$foodDao->selectByFoodname($topThree[$i]->foodname);
+        $htmlStatement = '<p>' . $count . '. ' . $food->name . ' with a rating of ' . ($topThree[$i]->value ). '</p>';
         echo $htmlStatement;
         $count++;
     }
     echo '<table><tr>';
     for ($i = 0; $i < 3; $i++) {
-        $htmlStatement = '<td> <img src= "../static/images/' . $topThree[$i]->image . '"/> </td>';
+        $food=$foodDao->selectByFoodname($topThree[$i]->foodname);
+        $htmlStatement = '<td> <img src= "../static/images/' . $food->image . '"/> </td>';
         echo $htmlStatement;
     }
     echo '</tr><tr>';
     for ($i = 0; $i < 3; $i++) {
-        $htmlStatement = '<td><p>' . $topThree[$i]->name . '</p></td>';
+        $food=$foodDao->selectByFoodname($topThree[$i]->foodname);
+        $htmlStatement = '<td><p>' . $food->name . '</p></td>';
+        echo $htmlStatement;
     }
     echo '</tr></table>';
+}
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
+    }
 }
 
 function getUserName(){

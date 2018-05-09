@@ -27,6 +27,7 @@ session_start();
     <li><a class='active' href='search.php'>Search</a></li>
     <li><a class='active' href='landing.php'>Sign Out</a></li>
     <li><a class='active' href='userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 <div class="reviews">
@@ -61,7 +62,8 @@ function getRatings()
     echo '<table><th>Your three favorite meals: </th>';
     $dao=new RatingDao();
     $foodDao=new FoodDao();
-    $ratings=$dao->selectByUsername($_SESSION['user']->username);
+    $ratings=$dao->selectByUsernameSorted($_SESSION['user']->username);
+    $ratings=array_reverse($ratings);
     $topThree = array_slice($ratings, 0, 3);
     for($i=0;$i<count($topThree);$i++) {
         echo '<tr><td>' . ($i + 1) . '. ' . $topThree[$i]->foodname.' with a rating of '. $topThree[$i]->value.'</td></tr>';
@@ -93,3 +95,15 @@ function getStats()
     echo '<td>'. $reviewCount.' </td></tr>';
     echo '</table>';
 }
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
+    }
+}
+?>

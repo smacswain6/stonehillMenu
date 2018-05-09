@@ -17,7 +17,7 @@ session_start();
     <li><a class='active' href='homepage.php' >Homepage</a></li>
     <li><a class = 'active' href='menu.php'>Menu</a></li>
     <li><a class='active' href='search.php'>Search</a></li>
-    <li><a class='active' href='landing.html'>Sign Out</a></li>
+    <li><a class='active' href='landing.php'>Sign Out</a></li>
     <li><a class='active' href='userpage.php'>User Page</a></li>
     <li><a class='active' href='admin.php'>Admin</a></li>
 </ul>

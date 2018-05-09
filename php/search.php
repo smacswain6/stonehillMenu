@@ -1,5 +1,6 @@
 <?php
 include("FoodDao.php");
+include("User.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -30,6 +31,7 @@ session_start();
     <li class='nav'><a href='search.php'>Search</a></li>
     <li class='nav'><a class='active' href='landing.php'>Sign Out</a></li>
     <li class='nav'><a class='active' href='userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 <!--SEARCH-->
@@ -75,5 +77,17 @@ if(isset($_POST['search'])) {
 }
 else
     return;
+}
+
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
+    }
 }
 ?>
