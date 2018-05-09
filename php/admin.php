@@ -14,11 +14,11 @@ session_start();
 
 <!--NAV BAR-->
 <ul>
-    <li><a class='active' href='homepageAdmin.php' >Homepage</a></li>
-    <li><a class = 'active' href='menuAdmin.php'>Menu</a></li>
-    <li><a class='active' href='searchAdmin.php'>Search</a></li>
+    <li><a class='active' href='homepage.php' >Homepage</a></li>
+    <li><a class = 'active' href='menu.php'>Menu</a></li>
+    <li><a class='active' href='search.php'>Search</a></li>
     <li><a class='active' href='landing.html'>Sign Out</a></li>
-    <li><a class='active' href='userpageAdmin.php'>User Page</a></li>
+    <li><a class='active' href='userpage.php'>User Page</a></li>
     <li><a class='active' href='admin.php'>Admin</a></li>
 </ul>
 
