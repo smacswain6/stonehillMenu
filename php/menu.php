@@ -1,5 +1,6 @@
-<?php session_start(); ?>
 <?php include ("FoodDao.php"); ?>
+<?php include ("User.php");?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,7 @@
     <li><a class='active' href='search.php'>Search</a></li>
     <li><a class='active' href='landing.php'>Sign Out</a></li>
     <li><a class='active' href='userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 <!--Menu-->
@@ -69,6 +71,17 @@ function checkForm()
             $_SESSION['fooditem']=$fooditem;
             header("Location: ../php/fooditem.php"); /* Redirect browser */
         }
+    }
+}
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
     }
 }
 

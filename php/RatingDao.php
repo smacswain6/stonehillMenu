@@ -82,6 +82,26 @@ class RatingDao
             return Null;
         }
     }
+    public function selectByUsernameSorted($username)
+    {
+        $stmt = $this->pdo->prepare("SELECT * from ratings where username=:username ORDER BY value");
+        if ($stmt == NULL) {
+            error_log("stmt is null", 0);
+        }
+        try {
+            $stmt->execute([':username' => $username]);
+            $ratings = [];
+
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $rating = new Rating($row['foodname'], $row['value'], $row['username']);
+                echo $rating->toString();
+                array_push($ratings, $rating);
+            }
+            return $ratings;
+        } catch (PDOException $exception) {
+            error_log($exception->getMessage());
+        }
+    }
     public function selectByFoodname($fname)
         {
             try {

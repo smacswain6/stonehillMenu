@@ -25,6 +25,7 @@ session_start();
     <li><a class='active' href='../php/search.php'>Search</a></li>
     <li><a class='active' href='../php/landing.php'>Sign Out</a></li>
     <li><a class='active' href='../php/userpage.php'>User Page</a></li>
+    <?php checkAdmin(); ?>
 </ul>
 
 
@@ -62,6 +63,17 @@ function TopThreeFoods()
         $htmlStatement = '<td><p>' . $topThree[$i]->name . '</p></td>';
     }
     echo '</tr></table>';
+}
+function checkAdmin()
+{
+    $user=$_SESSION['user'];
+    if($user->admin==1)
+    {
+        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
+    }
+    else{
+        return;
+    }
 }
 
 function getUserName(){

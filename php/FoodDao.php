@@ -111,7 +111,6 @@ return Null;
                 ':d' => $foodItem->day,
                 ':n' => $foodItem->name,
             ]);
-            echo 'changed';
             return true;
         }
         catch (PDOException $exception) {
