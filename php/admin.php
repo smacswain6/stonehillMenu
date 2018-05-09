@@ -63,9 +63,19 @@ session_start();
 function handleForm(){
     $dao = new FoodDao();
     if(isset($_POST['foodname'])){
+        print_r($_POST);
         $foodname = $_POST['foodname'];
         $description = $_POST['description'];
-        $image = $_POST['file'];
+        $image = $_FILES['file']['name'];
+        $targetdir = '../static/images/';
+        // name of the directory where the files should be stored
+        $targetfile = $targetdir.$_FILES['file']['name'];
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfile)) {
+ 
+        } else {
+
+        }
         $station = $_POST['day'];
         $day = $_POST['day'];
         $foodItem = new Food($foodname,1,$image,$description,$station,$day,1,true);
