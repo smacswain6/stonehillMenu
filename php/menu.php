@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-<?php include ("FoodDao.php"); ?>
+<?php
+include ("FoodDao.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,8 @@
     <link rel = 'stylesheet'  href = "../static/menu.css" />
 </head>
 <body>
+<script src="tableSort.js"></script>
+
 
 <!--NAV BAR-->
 <ul>
@@ -41,7 +44,7 @@ function populateMenu()
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     $dao=Null;
-    echo '<table>
+    echo '<table id="menutable">
         <tr>
             <th>Day</th>
             <th>Meal</th>
