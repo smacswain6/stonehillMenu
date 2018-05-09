@@ -139,16 +139,24 @@ class RatingDao
             }
         }
 
+        function populate()
+        {
+            $dao = new RatingDao();
+            $dao->insert(new Rating('Angus Quesadilla Burger',3,'admin'));
+            $dao->insert(new Rating('Antipasto Salad Plate',10,'admin'));
+            $dao->insert(new Rating('Baked Potato Bar',2,'admin'));
+            $dao->insert(new Rating('BBQ Beef Briskett',7,'admin'));
+            $dao->insert(new Rating('BBQ Pulled Pork or Chicken Sandwhich',5,'admin'));
+            $dao->insert(new Rating('Bread Boules',3,'admin'));
+            $dao->insert(new Rating('Breakfast sandwich',4,'admin'));
+            $dao->insert(new Rating('Buffalo Chicken Penne',5,'admin'));
+            $dao->insert(new Rating('Burger Mania',9,'admin'));
+            $dao->insert(new Rating('Calabrian Polenta',3,'admin'));
+            $dao->insert(new Rating('Calzonee',8,'admin'));
+        }
+
 
     }
 
-#$dao = new RatingDao();
-#$rating = new Rating('Burger Mania',1,'stephen');
-#print $rating->id;
-#$dao->insert($rating);
-#$rating1 = new Rating('Tacos', 10, 'matt');
-#print $rating1->key;
-#$dao->update($rating1);
-#$ratings = $dao->selectByFoodname("Tacos");
-#foreach ($ratings as $rating){
-#    echo $rating->value;
+$dao = new RatingDao();
+$dao->populate();

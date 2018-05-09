@@ -131,17 +131,12 @@ class UserDao
         $dao->insert(new User('nick','lischenok',0));
         $dao->insert(new User('matthew','young',0));
         $dao->insert(new User('michael','middleton',0));
-        $dao->insert(new User("matt","peters",0));
+        $dao->insert(new User("vladimira","lea",0));
+        $dao->insert(new User("abby","abner",0));
+        $dao->insert(new User("mrytle","franklin",0));
+        $dao->insert(new User("viola","myles",0));
+        $dao->insert(new User("brock","anderson",0));
     }
 
 }
 
-//UserDao::populate();
-#$dao=new UserDao();
-#$dao->populate();
-//$dao->delete(new User("michael","middleton"));
-//$dao->delete(new User('nick','lischenok'));
-#$dao->delete(new User('matt','young'));
-//$dao->delete(new User('michael','middleton'));
-//$dao->delete(new User("sam","passwordChange"));
-//$dao->update(new User ('user','passwordChange'));

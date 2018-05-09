@@ -1,6 +1,6 @@
-<?php include ("FoodDao.php"); ?>
-<?php include ("User.php");?>
 <?php session_start(); ?>
+<?php
+include ("FoodDao.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,8 @@
     <link rel = 'stylesheet'  href = "../static/menu.css" />
 </head>
 <body>
+<script src="tableSort.js"></script>
+
 
 <!--NAV BAR-->
 <ul>
@@ -19,7 +21,6 @@
     <li><a class='active' href='search.php'>Search</a></li>
     <li><a class='active' href='landing.php'>Sign Out</a></li>
     <li><a class='active' href='userpage.php'>User Page</a></li>
-    <?php checkAdmin(); ?>
 </ul>
 
 <!--Menu-->
@@ -43,7 +44,7 @@ function populateMenu()
     $dao = new FoodDao();
     $menuItems = $dao->selectAll();
     $dao=Null;
-    echo '<table>
+    echo '<table id="menutable">
         <tr>
             <th>Day</th>
             <th>Meal</th>
@@ -71,17 +72,6 @@ function checkForm()
             $_SESSION['fooditem']=$fooditem;
             header("Location: ../php/fooditem.php"); /* Redirect browser */
         }
-    }
-}
-function checkAdmin()
-{
-    $user=$_SESSION['user'];
-    if($user->admin==1)
-    {
-        echo '<li class=\'nav\'><a class=\'active\' href=\'admin.php\'>Admin Page</a></li>';
-    }
-    else{
-        return;
     }
 }
 
