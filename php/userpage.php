@@ -82,11 +82,14 @@ function getStats()
     $ratingCount=count($ratings);
     $reviewCount=count($reviews);
     $sum=0;
+    $averageRating=0;
     for($i=0;$i<$ratingCount;$i++)
     {
         $sum=$sum+$ratings[$i]->value;
     }
-    $averageRating=$sum/$ratingCount;
+    if($ratingCount!=0) {
+        $averageRating = $sum / $ratingCount;
+    }
     echo '<table class=\"one\" height=\"200px\" width=\"400px\"> <th>User stats</th><tr><td> Total ratings: </td>' ;
     echo '<td>'. $ratingCount .'</td></tr>';
     echo'<tr><td>Average rating: </td>';
